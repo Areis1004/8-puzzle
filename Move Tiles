@@ -1,0 +1,74 @@
+import sys 
+import copy 
+        
+def find_pos(s): 
+    for i in range(3): 
+        for j in range(3): 
+            if s[i][j] == 0: 
+                return([i,j]) 
+    
+def up(s,pos): 
+    i = pos[0] 
+    j = pos[1] 
+    if i > 0: 
+        temp = copy.deepcopy(s) 
+        temp[i][j] = temp[i-1][j] 
+        temp[i-1][j] = 0 
+        return (temp) 
+    else: 
+        return (s) 
+        
+def down(s,pos):
+    i = pos[0] 
+    j = pos[1] 
+    if i < 2: 
+        temp = copy.deepcopy(s) 
+        temp[i][j] = temp[i+1][j] 
+        temp[i+1][j] = 0 
+        return (temp) 
+    else: 
+        return (s) 
+        
+def right(s,pos):
+    i = pos[0] 
+    j = pos[1] 
+    if j < 2: 
+        temp = copy.deepcopy(s) 
+        temp[i][j] = temp[i][j+1] 
+        temp[i][j+1] = 0 
+        return (temp) 
+    else: 
+        return (s)   
+        
+def left(s,pos):
+    i = pos[0] 
+    j = pos[1] 
+    if j > 0: 
+        temp = copy.deepcopy(s) 
+        temp[i][j] = temp[i][j-1] 
+        temp[i][j-1] = 0 
+        return (temp) 
+    else: 
+        return (s)
+        
+def main () :
+
+    s = [[2,8,3],[1,0,4],[7,6,5]] 
+    
+    print('Start state :')
+    print ([s])
+    print('')
+    
+    pos = find_pos(s)
+    
+    print('down')
+    print(down(s,pos)) 
+    print('right')
+    print(right(s,pos))
+    print('up')
+    print(up(s,pos))
+    print('left')
+    print(left(s,pos))
+    
+if __name__=="__main__":
+    main()
